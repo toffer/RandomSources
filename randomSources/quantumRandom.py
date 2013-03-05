@@ -59,7 +59,7 @@ class QuantumRandom(Random):
 			if obj.get('type') == 'string':
 				obj['data'] = [s.encode('ascii') for s in obj['data']]
 			return obj
-		data = json.loads(urllib2.urlopen(url).read(), object_hook=object_hook)
+		data = json.loads(urlopen(url).read(), object_hook=object_hook)
 		assert data['success'] is True, data
 		assert data['length'] == arrayLength, data
 		return data['data']
