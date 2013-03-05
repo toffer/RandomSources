@@ -147,10 +147,11 @@ class RandomDotOrg(Random):
 					if n > 1:
 						return self._randbelow(istart, n)
 					return self._randbelow(istart)
+				shift = 0 - imin
 				r = self.fetchIntegers(imin, imin + istart - 1, n)
 				if n == 1:
-					return r[0]
-				return r
+					return shift + r[0]
+				return [int(shift + x) for x in r]
 			raise ValueError('empty range for randrange()')
 		
 		# stop argument supplied.
