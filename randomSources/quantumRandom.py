@@ -169,6 +169,10 @@ class QuantumRandom(Random):
 		return int(istart + istep*self._randbelow(n, generator))
 	randrange.__doc__ = Random.randrange.__doc__
 	
+	def randint(self, a, b, n=1):
+		return self.randrange(a, b+1, n=n)
+	randint.__doc__ = Random.randint.__doc__
+
 	def _randbelow(self, n, generator=None, _log=_log, int=int):
 		k = int(1.00001 + _log(n-1, 2.0))   # 2**k > n-1 > 2**(k-2)
 		r = self.getrandbits(k, generator)
